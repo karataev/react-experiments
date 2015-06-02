@@ -1,12 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
 <head lang="en">
     <meta charset="UTF-8">
     <title>React Experiments</title>
-</head>
-<body>
 
-<h1>Hello, React!</h1>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+
+    <style>
+        .content {
+            margin-top: 20px;
+        }
+    </style>
+
+</head>
+<body ng-controller="MainCtrl">
+
+
+<div class="container well content">
+    <h1>React Experiments</h1>
+
+    <ol>
+        <li ng-repeat="item in items">
+            <h4><a ng-href="http://karataev.github.io/react-experiments/{{item.url}}">{{item.title}}</a></h4>
+            <p>{{item.desc}}</p>
+            <hr/>
+        </li>
+    </ol>
+</div>
+
+
+<script>
+
+    var app = angular.module("app", []);
+
+    app.controller("MainCtrl", function($scope) {
+        $scope.items = [
+            {title:"Clicker", url:"clicker", desc:"A simple use case of a component with state"}
+        ];
+    })
+
+</script>
 
 </body>
 </html>
